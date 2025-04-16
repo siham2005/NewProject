@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Espace Étudiant</title>
+</head>
+<body>
+   <div class="container">
+    <div id="login-section">
+      <h1>Bienvenue sur votre espace Etudiant</h1>
+      <input type="text" id="username" placeholder="Nom d'utilisateur">
+      <input type="password" id="password" placeholder="Mot de passe">
+      <button>Se connecter</button>
+    </div>
+    
+   <div id="geo-section" class="hidden">
+      <h2>Autoriser la géolocalisation</h2>
+      <button >Activer la géolocalisation</button>
+    </div>
+
+    <div id="exam-section" class="hidden">
+      <h2>Examen</h2>
+      <div id="question-container"></div>
+      <div id="timer"></div>
+      <button >Question suivante</button>
+    </div>
+
+    <div id="score-section" class="hidden">
+      <h2>Examen terminé</h2>
+      <p>Votre score : <span id="score">0</span>/100</p>
+    </div>
+  </div>
+
+
+
+
+</body>
+</html>
