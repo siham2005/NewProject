@@ -1,39 +1,217 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Espace Étudiant</title>
-</head>
-<body>
-   <div class="container">
-    <div id="login-section">
-      <h1>Bienvenue sur votre espace Etudiant</h1>
-      <input type="text" id="username" placeholder="Nom d'utilisateur">
-      <input type="password" id="password" placeholder="Mot de passe">
-      <button>Se connecter</button>
-    </div>
+ <html lang="fr">
+ <head>
+   <meta charset="UTF-8">
+   <title>Espace Etudiant</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <style>
+     * {
+       box-sizing: border-box;
+     }
+ 
+     body {
+       margin: 0;
+       font-family: Arial, sans-serif;
+       background-color: #fdf6f0;
+       display: flex;
+       flex-direction: column;/* aligne les éléments de haut en bas sur l'axe vertical*/
+       min-height: 100vh;/* la hauteur minimale d'un élément*/
+     }
+ 
     
-   <div id="geo-section" class="hidden">
-      <h2>Autoriser la géolocalisation</h2>
-      <button >Activer la géolocalisation</button>
+     .header {
+       background-color: #1f2a3f; /* Bleu foncé */
+       color: white;
+       padding: 1rem 2rem;
+       position: relative;
+       z-index: 10;/*définir l'ordre de superposition des éléments positionnés*/
+     }
+ 
+     .header .container {
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+     }
+ 
+     .header .logo {
+       font-size: 1.5rem;
+       font-weight: bold;
+     }
+ 
+ 
+ 
+     .header-wave {
+       background: #cba075; 
+       height: 50px;
+       border-bottom-left-radius: 50% 20px;
+       border-bottom-right-radius: 50% 20px;
+       z-index: 10;
+       position: relative;
+     }
+ 
+  
+     .main-wrapper {
+         display: flex;
+             } 
+    .sidebar {
+       width: 300px;
+        background: #1f2a3f; /* Bleu foncé */
+       color: white;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       text-align: center;
+       padding: 2rem;
+
+     }
+ 
+     .sidebar h1 {
+      font-size: 2rem;
+       line-height: 4rem;
+       margin-bottom: 520px;
+     }
+
+   .main-content {
+       flex: 1;
+       background-color: #fdf6f0;
+       padding: 2rem;
+        }
+     
+
+    form {
+       background: white;
+       padding: 6rem;
+       border-radius: 20px;
+       box-shadow: 0 0 2px rgba(0,0,0,0.5);
+       margin-bottom: 5rem;
+       width: 700px;
+       position: relative;
+       left:120px;
+       top: 10px;
+     }
+     .main-container {
+            background-color: white;
+            padding: 20px 20px;
+            
+            
+            text-align: center;
+            width: 500px;
+        }
+      input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 15px;
+           
+        }
+      label{
+            font-size:28px;
+            color: #0d47a1;        
+            font-weight: bold;
+            justify-content: center;
+            position: relative;
+            bottom: 30px;
+            
+        }
+
+        button {
+            background-color: #0d47a1;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 19px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+       background: #08306b;
+     }
+
+        .error {
+            color: red;
+            margin-top: 15px;
+            font-weight: bold;
+            display: none;
+
+      }
+@media (max-width: 768px) {
+      .sidebar {
+        padding: 1.5rem;
+      }
+
+      .sidebar h1 {
+        font-size: 1.5rem;
+        line-height: 2.2rem;
+      }
+
+      .main-content {
+        padding: 1rem;
+      }
+
+      form {
+        padding: 1.5rem;
+      }
+
+      label {
+        font-size: 18px;
+      }
+
+      input, button {
+        font-size: 16px;
+      }
+    }
+       
+      
+    
+
+    
+
+    
+        
+
+
+     </style>
+ </head>
+ <body>
+
+
+  <!-- HEADER -->
+   <header class="header">
+     <div class="container">
+       <div class="logo">Enligne<span style="color: #f0c095;">.exam</span></div>
+     </div>
+   </header>
+   <div class="header-wave"></div>
+ 
+   <!-- CONTENU PRINCIPAL -->
+   <div class="main-wrapper">
+     <div class="sidebar">
+       <h1>Bienvenue<br>sur votre<br>espace etudiant</h1>
+     </div>
+
+
+      <div class="main-content">
+         
+          
+           <form id="examForm">
+            <div class=" main-container">
+    
+    <label for="exam">Entrez le lien d'examen </label>
+    <input type="lien" id="exam" placeholder="  Entrez... ">
+    <button onclick="startExam()">Commencer l'examen</button>
+    <div id="errorMessage" class="error" style="display: none;">
+        Veuillez entrez un lien.
     </div>
-
-    <div id="exam-section" class="hidden">
-      <h2>Examen</h2>
-      <div id="question-container"></div>
-      <div id="timer"></div>
-      <button >Question suivante</button>
-    </div>
-
-    <div id="score-section" class="hidden">
-      <h2>Examen terminé</h2>
-      <p>Votre score : <span id="score">0</span>/100</p>
-    </div>
-  </div>
+</div>
+          
+          </form>
 
 
 
 
+      </div>
+</div>
 </body>
-</html>
