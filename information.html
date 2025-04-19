@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Informations de l'examen</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      background-color: #fdf6f0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header {
+      background-color: #1f2a3f;
+      color: white;
+      padding: 1rem 2rem;
+      z-index: 10;
+    }
+
+    .header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .header-wave {
+      background: #cba075;
+      height: 50px;
+      border-bottom-left-radius: 50% 20px;
+      border-bottom-right-radius: 50% 20px;
+    }
+
+    .main-wrapper {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+      flex-wrap: wrap;
+    }
+
+    .sidebar {
+      width: 300px;
+      background: #1f2a3f;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      flex-shrink: 0;
+    }
+
+    .sidebar h1 {
+      font-size: 2.2rem;
+      line-height: 4rem;
+      margin: 0;
+    }
+
+
+    .exam-container {
+      margin-bottom: 4rem;
+      background: white;
+      padding: 1rem;
+      border-radius: 20px;
+      box-shadow: 0 0 2px rgba(0,0,0,0.5);
+      width: 100%;
+      max-width: 700px;
+      position: relative;
+      left: 150px;
+      top: 10px;
+    }
+    .exam-container h2 {
+      font-size: 28px;
+      color: #0d47a1;
+      font-weight: bold;
+      display: block;
+      margin-bottom:33px;
+      line-height: 3rem;
+      text-align: center;
+    }
+    .form-group {
+      margin-bottom: 5px;
+    }
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+    
+     button {
+      background-color: #0d47a1;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 19px;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button:hover {
+      background: #08306b;
+    } 
+
+
+
+
+  </style>
+</head>
+<body>
+      <header class="header">
+    <div class="container">
+      <div class="logo">✅enligne<span style="color: #f0c095;">.exam</span></div>
+    </div>
+  </header>
+  <div class="header-wave"></div>
+
+  <div class="main-wrapper">
+    <div class="sidebar">
+      <h1>Bienvenue<br>sur votre<br>espace étudiant</h1>
+    </div>
+
+
+
+
+
+
+
+  <div class="exam-container">
+    <h2>Informations de l’examen</h2>
+    <div class="form-group">
+      <label for="examName">Titre :</label>
+      <input type="text" id="examName">
+    </div>
+    <div class="form-group">
+      <label for="description">Description :</label>
+      <input type="text" id="description" >
+    </div>
+    <div class="form-group">
+      <label for="public">Public ciblè :</label>
+      <input type="text" id="public">
+    </div>
+    <div class="form-group">
+      <label for="tolerance">Taux de tolérance (% erreurs) :</label>
+      <input type="number" id="tolerance" value="10%">
+    </div>
+    
+    <div class="form-group">
+      <label for="note">Note :</label>
+      <input type="number" id="note" value="10">
+    </div>
+    
+    <div class="form-group">
+      <label for="duration">Durée (en secondes) :</label>
+      <input type="number" id="duration" value="60">
+    </div>
+    <button type="submit">Start</button>
+
+
+
+  </div>
+</body>
+</html>
