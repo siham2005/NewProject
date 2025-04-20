@@ -2,21 +2,21 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Informations de l'examen</title>
+  <title>Informations de l'examen et d'étudiant</title>
   <style>
     * {
       box-sizing: border-box;
     }
 
     html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      font-family: Arial, sans-serif;
-      background-color: #fdf6f0;
-      display: flex;
-      flex-direction: column;
-    }
+       margin: 0;
+       font-family: Arial, sans-serif;
+       background-color: #fdf6f0;
+       display: flex;
+       flex-direction: column;/* aligne les éléments de haut en bas sur l'axe vertical*/
+       min-height: 100vh;/* la hauteur minimale d'un élément*/
+       
+     }
 
     .header {
       background-color: #1f2a3f;
@@ -41,6 +41,7 @@
       height: 50px;
       border-bottom-left-radius: 50% 20px;
       border-bottom-right-radius: 50% 20px;
+      
     }
 
     .main-wrapper {
@@ -69,7 +70,7 @@
     }
 
 
-    .exam-container {
+    .exam-container  {
       margin-bottom: 4rem;
       background: white;
       padding: 1rem;
@@ -81,7 +82,7 @@
       left: 150px;
       top: 10px;
     }
-    .exam-container h2 {
+    .exam-container  h2 {
       font-size: 28px;
       color: #0d47a1;
       font-weight: bold;
@@ -120,7 +121,52 @@
     button:hover {
       background: #08306b;
     } 
+    /* Media query pour les petits écrans */
+    @media (max-width: 768px) {
+      .main-wrapper {
+        flex-direction: column;
+      }
 
+      .sidebar {
+        width: 100%;
+        padding: 1.5rem;
+      }
+
+      .main-content {
+        padding: 1rem;
+      }
+
+      form {
+        padding: 1.5rem;
+        max-width: 90%;
+        left: 0;  /* Enlève l'espace de décalage à gauche */
+        top: 0;  /* Enlève l'espace de décalage en haut */
+      }
+
+      label {
+        font-size: 22px;  /* Réduit la taille du texte des labels sur petits écrans */
+      }
+
+      input, button {
+        font-size: 16px;
+      }
+    }
+
+    /* Pour les très petits écrans */
+    @media (max-width: 480px) {
+      form {
+        padding: 1.5rem;  /* Réduit encore le padding pour les très petits écrans */
+        max-width: 100%;  /* Assure que le formulaire prend toute la largeur de l'écran */
+      }
+
+      label {
+        font-size: 18px;  /* Taille plus petite pour les très petits écrans */
+      }
+
+      input, button {
+        font-size: 14px;
+      }
+    }
 
 
 
@@ -151,19 +197,16 @@
       <label for="examName">Titre :</label>
       <input type="text" id="examName">
     </div>
+    
     <div class="form-group">
       <label for="description">Description :</label>
       <input type="text" id="description" >
     </div>
     <div class="form-group">
-      <label for="public">Public ciblè :</label>
-      <input type="text" id="public">
+      <label for="Name">Nom du prof :</label>
+      <input type="text" id="Name">
     </div>
-    <div class="form-group">
-      <label for="tolerance">Taux de tolérance (% erreurs) :</label>
-      <input type="number" id="tolerance" value="10%">
-    </div>
-    
+
     <div class="form-group">
       <label for="note">Note :</label>
       <input type="number" id="note" value="10">
@@ -173,10 +216,31 @@
       <label for="duration">Durée (en secondes) :</label>
       <input type="number" id="duration" value="60">
     </div>
+
+     <div class="etud-container">  
+     <h2>Informations de l’étudiant</h2>
+     <div class="form-group">
+      <label for="Name">Nom de l’étudiant  :</label>
+      <input type="text" id="Name">
+    </div>
+      <div class="form-group">
+      <label for="Name">Prénom de l’étudiant  :</label>
+      <input type="text" id="Name">
+    </div>
+    <div class="form-group">
+      <label for="Field">Filiére  :</label>
+      <input type="text" id="Field">
+    </div>
+
+    
+
+
+
+
     <button type="submit">Start</button>
 
 
 
-  </div>
+ 
 </body>
 </html>
