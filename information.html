@@ -69,6 +69,32 @@
       left: 180px;
       top: 30px;
     } 
+    .score{
+      margin-bottom: 4rem;
+      background: white;
+      padding: 1rem;
+      border-radius: 20px;
+      box-shadow: 0 0 2px rgba(0,0,0,0.5);
+      width: 100%;
+      max-width: 900px;
+      min-height: 50px;
+      position: relative;
+      left: 180px;
+      top: 55px;
+
+    }
+    h2 {
+      text-align: center;
+      color:  #0d47a1;
+      margin-bottom: 20px;
+    }
+
+    
+    #score-section p {
+      text-align: center;
+      font-size: 20px;
+      color: #27ae60;
+    }
 
     .titre {
       text-align: center;
@@ -83,6 +109,12 @@
       top: 27px;
       left: 10px;
 
+    }
+    h1{
+      color:  #0d47a1;
+      margin-bottom: 20px;
+      font-size: 20px;
+      font-family: calibri;
     }
     label {
       display: block;
@@ -149,17 +181,42 @@
       }
     }
 
-    @media screen and (max-width: 600px) {
-      .main-container {
-        padding: 1.5rem;
-      }
-
-      .titre {
-        font-size: 1.5rem;
-      }
-    }
+    
+    
   
+@media (max-width: 768px) {
+  .main-container, .score {
+    padding: 1.5rem;
+    margin: 1rem auto;
+  }
 
+  .titre {
+    font-size: 1.5rem;
+  }
+
+  h1, h2 {
+    font-size: 1.3rem;
+  }
+
+  .exam, .question {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-container, .score {
+    padding: 1rem;
+    margin: 0.5rem auto;
+  }
+
+  .titre, h1, h2 {
+    font-size: 1.1rem;
+  }
+
+  .form-group label {
+    font-size: 0.9rem;
+  }
+}
 
 
   </style>
@@ -183,6 +240,7 @@
    </div>
     
      <div class="form-group">
+      <h1>Vos coordonnées</h1>
       <label for="Name">Nom :</label>
       
     </div>
@@ -220,5 +278,14 @@
 
 
       </div>
+<div class="score">
+  <div id="score-section" class="hidden">
+      <h2>Examen terminé</h2>
+      <p>Votre score : <span id="score">0</span>/100</p>
+    </div>
+  </div>
+
+
+
 </body>
 </html>
