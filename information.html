@@ -83,6 +83,9 @@
       top: 55px;
 
     }
+    .score{
+      display: none;
+    }
     h2 {
       text-align: center;
       color:  #0d47a1;
@@ -94,7 +97,7 @@
       text-align: center;
       font-size: 20px;
       color: #27ae60;
-    }
+    } 
 
     .titre {
       text-align: center;
@@ -126,7 +129,7 @@
       position: relative;
       top: 50px;
       left: 10px;
-      font-size: 29px;
+      font-size: 25px;
 
     }
     
@@ -151,7 +154,7 @@
       position: relative;
       left: 10px;
       top: 70px;
-      font-size: 20px;
+      font-size: 16px;
 
     }
    
@@ -162,7 +165,7 @@
       overflow: hidden;
       margin-bottom: 20px;
       position: relative;
-      top: 30px;
+      
     }
 
     .timer-bar {
@@ -171,6 +174,22 @@
       background-color: #dc3545;
       animation: countdown 10s linear forwards;
     }
+    .answer {
+      margin-top: 1rem;
+      padding: 1rem;
+      background-color: #f3f3f3;
+      border-radius: 8px;
+      font-size: 1rem;
+      position: relative;
+      top: 100px;
+      
+    }
+    .answer input{
+
+      width: 100%;
+      height: 27px;
+    }
+
 
 @keyframes countdown {
       from {
@@ -240,7 +259,7 @@
    </div>
     
      <div class="form-group">
-      <h1>Vos coordonnées</h1>
+      <h1>Vos coordonnées :</h1>
       <label for="Name">Nom :</label>
       
     </div>
@@ -259,14 +278,14 @@
     
 
     <div class="exam">
-      <label for="question">question </label>
+      <label for="question">Question :</label>
     </div>
     <div class="question">
-      <label for="question">1</label>
+      <label for="question">1. Quelle est la différence entre == et === ? </label>
     </div>
     
       <div class="answer">
-        1
+        <input type="" name="">
       </div>
     
 
