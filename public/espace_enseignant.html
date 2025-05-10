@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Espace Enseignant</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Définition de style de base */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #fdf6f0;
+      min-height: 100vh; /* la hauteur minimale d'un élément */
+    }
+
+    /* Style des boutons */
+    .container button {
+      font-size: 20px;
+      font-weight: 100;
+      color: white;
+      cursor: pointer;
+      background: transparent;
+      border: 2px solid #0d47a1;
+      border-radius: 50px;
+      padding: 5px 8px;
+      font-weight: bold;
+    }
+
+    .container button:hover {
+      background-color: #0d47a1;
+      transition: all 0.4s ease 0s;
+    }
+
+    /* En-tête fixe en haut de la page */
+    .header {
+      background-color: #1f2a3f;/* Bleu foncé */
+      color: white;
+      padding: 1rem 2rem;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;/* définir l'ordre de superposition des éléments positionnés */
+    }
+
+    .header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    /* Effet de vague sous le header */
+    .header-wave {
+      background: #cba075;
+      height: 50px;
+      border-bottom-left-radius: 50% 20px;
+      border-bottom-right-radius: 50% 20px;
+      position: fixed;
+      width: 100%;
+      top: 70px;
+      z-index: 999;
+    }
+
+    /* Conteneur principal en deux colonnes */
+    .main-wrapper {
+      display: flex;
+      flex-direction: row;/* Définit la disposition horizontale */
+      padding-top: 120px; /* espace sous le header */
+    }
+
+    /* Barre latérale fixe */
+    .sidebar {
+      width: 300px;
+      background: #1f2a3f;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      position: fixed;
+      top: 120px;
+      bottom: 0;
+      left: 0;
+      height: calc(100vh - 120px);
+      overflow-y: auto;
+      z-index: 10;
+    }
+
+    .sidebar h1 {
+      font-size: 2rem;
+      line-height: 4rem;
+    }
+
+    /* Zone de contenu principal */
+    .main-content {
+      margin-left: 300px;
+      padding: 2rem;
+      flex: 1;
+      background-color: #fdf6f0;
+      overflow-y: auto;/* pour gérer le débordement du contenu vertical d'un élément */
+    }
+
+    h2 {
+      color: #0d47a1;
+      margin-top: 1rem;/* Ajoute un espacement entre les éléments */
+    }
+
+    /* Style des formulaires */
+    form {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      margin-bottom: 2rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 12px;
+      color: #333;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="file"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 4px;
+      border: 1px solid #bbb;
+      border-radius: 6px;
+    }
+
+    .inline {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .inline label {
+      flex: 1;
+    }
+
+    button {
+      margin-top: 1rem;
+      padding: 10px 20px;
+      background: #0d47a1;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #08306b;
+    }
+
+    /* Encadré pour chaque question ou examen */
+    .question-box {
+      border: 1px solid #ddd;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+      background: #fffdfc;
+    }
+
+    .question-box button {
+      background: #a0522d;
+      margin-top: 0.5rem;
+    }
+
+    .question-box button:hover {
+      background: #7b3f1d;
+    }
+  /* Ajout de styles responsives */
+  @media (max-width: 1024px) {
+    .main-wrapper {
+      flex-direction: column;
+    }
+
+    .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+      top: 0;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .main-content {
+      margin-left: 0;
+      padding: 1rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .header .container {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .header-wave {
+      top: 120px;
+      height: 40px;
+    }
+
+    .inline {
+      flex-direction: column;
+    }
+
+    .inline label {
+      width: 100%;
+    }
+
+    .container button {
+      font-size: 16px;
+      padding: 6px 12px;
+    }
+
+    .sidebar h1 {
+      font-size: 1.5rem;
+      line-height: 2.5rem;
+    }
+
+    .main-content h2 {
+      font-size: 1.2rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .header {
+      padding: 0.5rem 1rem;
+    }
+
+    .logo {
+      font-size: 1.2rem;
+    }
+
+    form {
+      padding: 1rem;
+    }
+
+    button {
+      padding: 8px 16px;
+      font-size: 0.9rem;
+    }
+
+    .question-box {
+      font-size: 0.9rem;
+    }
+  }
+
+
+  </style>
+</head>
+<body>
+
+  <!-- En-tête de la page -->
+  <header class="header">
+    <div class="container">
+      <div class="logo">✅enligne<span style="color: #f0c095;">.exam</span></div>
+      <a href="page d'accueil.html" class="btn"><button>Accueil</button></a>
+    </div>
+  </header>
+  <div class="header-wave"></div>
+
+  <!-- Structure principale de la page -->
+  <div class="main-wrapper">
+    <!-- Barre latérale à gauche -->
+    <div class="sidebar">
+      <h1>Bienvenue<br>sur votre<br>espace enseignant</h1>
+    </div>
+
+    <!-- Zone de contenu principale -->
+    <div class="main-content">
+      <h2>Création d’un Examen</h2>
+      <form id="examForm">
+        <label>Titre :
+          <input type="text" name="titre" required>
+        </label>
+        <label>Description :
+          <input type="text" name="description">
+        </label>
+        <label>Public ciblé :
+          <input type="text" name="public" placeholder="ex: 2e année MIP, S4, Groupe A">
+        </label>
+        <label>Lien généré :
+          <input type="text" id="examLink" readonly>
+        </label>
+        <button type="button">Ajouter l'examen</button>
+      </form>
+
+      <h2>Examens créés</h2>
+      <div id="listeExamens"></div>
+
+      <h2>Ajout de Questions</h2>
+      <form id="questionForm">
+        <label>Type de question :
+          <select id="typeQuestion">
+            <option value="directe">Question Directe</option>
+            <option value="qcm">QCM</option>
+          </select>
+        </label>
+
+        <label>Énoncé :
+          <textarea name="question" rows="2"></textarea>
+        </label>
+
+        <label>Fichier joint :
+          <input type="file" accept="image/*,audio/*,video/*">
+        </label>
+
+        <!-- Champs pour question directe -->
+        <div id="directeFields">
+          <label>Réponse attendue :
+            <input type="text" name="reponseDirecte">
+          </label>
+          <label>Taux de tolérance (% erreurs) :
+            <input type="text" value="10%">
+          </label>
+        </div>
+
+        <!-- Champs pour QCM -->
+        <div id="qcmFields" style="display: none;">
+          <label>Option 1 : <input type="text"> <input type="checkbox"> Bonne réponse</label>
+          <label>Option 2 : <input type="text"> <input type="checkbox"> Bonne réponse</label>
+          <label>Option 3 : <input type="text"> <input type="checkbox"> Bonne réponse</label>
+          <label>Option 4 : <input type="text"> <input type="checkbox"> Bonne réponse</label>
+        </div>
+
+        <div class="inline">
+          <label>Note :
+            <input type="number" value="10">
+          </label>
+          <label>Durée (en secondes) :
+            <input type="number" value="60">
+          </label>
+        </div>
+
+        <button type="button">Ajouter la question</button>
+      </form>
+
+      <div id="listeQuestions"></div>
+    </div>
+  </div>
+
+  <script>
+    // 🌊 Bascule directe / QCM
+    const typeQuestion = document.getElementById("typeQuestion");
+    const directeFields = document.getElementById("directeFields");
+    const qcmFields = document.getElementById("qcmFields");
+
+    typeQuestion.addEventListener("change", () => {
+      if (typeQuestion.value === "directe") {
+        directeFields.style.display = "block";
+        qcmFields.style.display = "none";
+      } else {
+        directeFields.style.display = "none";
+        qcmFields.style.display = "block";
+      }
+    });
+
+    // 📝 AJOUTER UN EXAMEN
+    document.querySelector("#examForm button").addEventListener("click", () => {
+      const titre       = document.querySelector("input[name='titre']").value;
+      const description = document.querySelector("input[name='description']").value;
+      const publicCible = document.querySelector("input[name='public']").value;
+
+      if (!titre.trim()) {
+        alert("Le titre est requis");
+        return;
+      }
+
+      fetch('http://localhost:3000/api/examens/ajouter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ titre, description, publicCible })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          document.getElementById("examLink").value = data.lien;
+          chargerExamens();
+        } else {
+          alert("Erreur lors de l'ajout de l'examen.");
+        }
+      })
+      .catch(err => {
+        console.error("Erreur examen:", err);
+        alert("Erreur serveur");
+      });
+    });
+
+    // ↻ Charger la liste des examens
+    function chargerExamens() {
+      fetch('http://localhost:3000/api/examens/liste')
+        .then(r => r.json())
+        .then(data => {
+          const cont = document.getElementById("listeExamens");
+          cont.innerHTML = "";
+          const exams = Array.isArray(data) ? data : (data.data || []);
+          exams.forEach(e => {
+            cont.innerHTML += `
+              <div class="question-box">
+                <strong>${e.titre}</strong><br>
+                <em>${e.description}</em><br>
+                <small>${e.public}</small><br>
+                <a href="${e.lien}" target="_blank">${e.lien}</a><br>
+                <button class="sup-exam" data-id="${e.id}">🗑️ Supprimer</button>
+              </div>`;
+          });
+          // suppression
+          document.querySelectorAll(".sup-exam").forEach(btn => {
+            btn.onclick = () => {
+              if (!confirm("Supprimer cet examen ?")) return;
+              fetch(`http://localhost:3000/api/examens/supprimer/${btn.dataset.id}`, {
+                method: 'DELETE'
+              })
+              .then(r => r.json())
+              .then(d => d.success ? chargerExamens() : alert("Erreur lors de la suppression."))
+              .catch(err => { console.error("Suppression:", err); alert("Erreur serveur"); });
+            };
+          });
+        })
+        .catch(err => { console.error("Chargement exams:", err); alert("Erreur serveur"); });
+    }
+    window.addEventListener("load", chargerExamens);
+
+    // 📝 AJOUTER UNE QUESTION (directe ou QCM)
+    document.querySelector("#questionForm button").addEventListener("click", () => {
+      const type       = typeQuestion.value;
+      const enonce     = document.querySelector("textarea[name='question']").value;
+      const reponseDir = type === "directe"
+        ? document.querySelector("input[name='reponseDirecte']").value
+        : null;
+      const tolerance  = type === "directe"
+        ? parseInt(document.querySelector("input[value='10%']").value.replace('%',''))
+        : 0;
+      const note       = parseInt(document.querySelectorAll("input[type='number']")[0].value, 10);
+      const duree      = parseInt(document.querySelectorAll("input[type='number']")[1].value, 10);
+      const qcm_options = type === "qcm"
+        ? Array.from(qcmFields.querySelectorAll("label")).map(label => ({
+            texte: label.querySelector("input[type='text']").value,
+            est_correct: label.querySelector("input[type='checkbox']").checked
+          }))
+        : null;
+
+      // NOTE: remplacez 1 par l'ID d'examen souhaité (ou ajoutez un select pour choisir l'examen)
+      const payload = {
+        examen_id: 1,
+        type_question: type,
+        enonce,
+        reponse_directe: reponseDir,
+        tolerance,
+        note,
+        duree,
+        qcm_options
+      };
+
+      fetch('http://localhost:3000/api/questions/ajouter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("Question ajoutée avec succès !");
+          document.querySelector("textarea[name='question']").value = "";
+          // vous pouvez recharger la liste des questions ici
+        } else {
+          alert("Erreur: " + (data.message || "Impossible d'ajouter la question"));
+        }
+      })
+      .catch(err => {
+        console.error("Erreur question:", err);
+        alert("Erreur serveur");
+      });
+    });
+  </script>
+
+</body>
+</html>
